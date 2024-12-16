@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <h1>FUCK VUE!!!!!!!!!!!!!!!!!!!!!</h1>
+    <h1>VIVA LA VUE3!!!!!!!!!!!!!!!!!!!!!</h1>
   </div>
 </template>
 
