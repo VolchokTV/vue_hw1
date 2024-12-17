@@ -1,6 +1,6 @@
 <template>
     <div class="input-wrapper">
-        <h32>Текстовый ввод Options API</h32>
+        <h2>Текстовый ввод Options API</h2>
         <input v-model="text">
         <div class="text-pole">{{ text }}</div>
     </div>

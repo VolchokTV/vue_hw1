@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Текстовый ввод Comosition API</h1>
+        <h2>Текстовый ввод Comosition API</h2>
         <input v-model="text">
         <div class="text-pole">{{ text }}</div>
 
