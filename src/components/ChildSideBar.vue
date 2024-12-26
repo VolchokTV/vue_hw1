@@ -1,6 +1,9 @@
 <template>
   <div>
-    sideBar
+    <aside>
+      <h3>Сайдбар</h3>
+      <p>Содержимое сайдбара.</p>
+    </aside>
   </div>
 </template>
 <script lang="ts">
@@ -10,4 +13,8 @@ export default defineComponent({});
 
 </script>
 
-<style></style>
+<style>
+aside {
+  padding: 20px;
+}
+</style>
