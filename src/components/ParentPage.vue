@@ -1,13 +1,10 @@
 <template>
   <div :class="theme">
-
     <ChildHeader @theme-toggled="toggleTheme" :theme-name="themeName" />
-
     <section>
       <div class="content">
         <div>
-          <ChildMain :posts="visiblePosts" @visibility-toggled="togglePostVisibility" />
-
+          <ChildMain :showAll="showAll" :posts="posts" @toggleList="toggleList" />
         </div>
         <div>
           <ChildSideBar />
@@ -20,50 +17,37 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, computed } from 'vue';
 import ChildHeader from './ChildHeader.vue';
 import ChildMain from './ChildMain.vue';
 import ChildSideBar from './ChildSideBar.vue';
 import ChildFooter from './ChildFooter.vue';
 import { posts } from '@/data/posts';
 
-export default defineComponent({
-  name: 'ParentPage',
-  components: { ChildHeader, ChildMain, ChildSideBar, ChildFooter },
-  data() {
-    return {
-      theme: 'light', // Начальная тема
-      posts,
-      showAll: false // Статус отображения всех постов
-    };
-  },
-  computed: {
-    themeName() {
-      return this.theme === 'light' ? 'dark' : 'light'; // Сообщение на кнопке
-
-    },
-    visiblePosts() {
-      return this.showAll ? this.posts : this.posts.slice(0, 10); // Возвращаем 10 или все посты
-    },
-
-  },
-  methods: {
-    toggleTheme() {
-      this.theme = this.theme === 'light' ? 'dark' : 'light';// Переключение темы
-    },
-    togglePostVisibility() {
-      this.showAll = !this.showAll; // Переключение состояния
-    }
-  }
-
+const theme = ref('light'); // Начальная тема
+//const posts = ref([]);
+//const showAll = ref(false); // Статус отображения всех постов
+const showAll = ref(false); // Исходное состояние - сначала 10 постов
+// Переключение темы
+  const toggleTheme = () => {
+    theme.value = theme.value === 'light' ? 'dark' : 'light';
+  };
+// Сообщение на кнопке
+const themeName = computed(() =>{
+  return theme.value === 'light' ? 'dark' : 'light';
 });
+
+// Переключение состояния
+const toggleList = () => {
+    showAll.value = !showAll.value;
+  };
 </script>
 
 <style scoped>
 .myHeader {
   color: brown;
- }
+}
 
 .light {
   background-color: aquamarine;

@@ -1,31 +1,24 @@
 <template>
   <header>
     <h1> Приложение В.А.В. </h1>
-    <button @click="toggleTheme">{{ themeName }}</button>
+    <button @click="emitToggleTheme">{{ themeName }}</button>
   </header>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+const props = defineProps({
+     themeName: {
+       type: String,
+       default: 'dark', // Задаем дефолтное значение
+       required: false,
+     }
+   });
 
-export default defineComponent({
+   const emit = defineEmits(['toggle-theme']);
 
-  props: {
-    themeName: {
-      type: String,
-      default: 'dark', // Задаем дефолтное значение
-      required: false
-    }
-  },
-
-  methods: {
-    toggleTheme() {
-      this.$emit('theme-toggled');
-    }
-  }
-});
-
-
-
+   const emitToggleTheme = () =>{
+       emit('toggle-theme');
+   };
 </script>
 
 <style>

@@ -4,7 +4,7 @@
       <h2>Главная секция</h2>
       <h2>Посты</h2>
       <ul>
-        <li v-for="post in posts" :key="post.id" class="post">
+        <li v-for="post in visiblePosts" :key="post.id" class="post">
           <h5>{{ post.title }}</h5>
           <p>{{ post.content }}</p>
         </li>
@@ -17,36 +17,31 @@
 </template>
 
 
-<script lang="ts">
+<script setup lang="ts">
 import type { IPost } from '@/data/posts';
-import { defineComponent } from 'vue';
+import {  computed, defineProps, defineEmits } from 'vue';
 
-export default defineComponent({
-  props: {
-      posts: {
-      type: Array<IPost>,
-      required: true,
-    },
-    },
-  computed: {
-    toggleButtonText() {
-      return this.showAll ? 'Показать первые 10' : 'Показать все';
-    }
-  },
 
-  data() {
-    return {
-      showAll: false // Исходное состояние - сначала 10 постов
-    };
-  },
-  methods: {
-    toggleVisibility() {
-      this.showAll = !this.showAll; // Переключаем состояние видимости постов
-      this.$emit('visibility-toggled'); // Эмитируем событие для родительского компонента
-    }
-  }
-
+const props = defineProps({
+  posts: { type: Array<IPost>, required: true },
+  showAll: { type: Boolean, required: true },
 });
+
+const emit = defineEmits(['toggleList']);
+const toggleButtonText = computed(() => {
+  return props.showAll ? 'Показать первые 10' : 'Показать все';
+});
+
+//const showAll = ref(true); // Исходное состояние - сначала 10 постов
+
+// Возвращаем 10 или все посты
+const visiblePosts = computed (() => {
+    return props.showAll ? props.posts : props.posts.slice(0, 10);
+  });
+const toggleVisibility = () => {
+  //showAll.value = !showAll.value; // Переключаем состояние видимости постов
+  emit('toggleList'); // Эмитируем событие для родительского компонента
+};
 
 </script>
 
