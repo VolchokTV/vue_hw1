@@ -3,15 +3,16 @@
     <main>
       <h2>Главная секция</h2>
       <h2>Посты</h2>
+      <button @click="toggleVisibility">
+        {{ toggleButtonText }}
+      </button>
       <ul>
         <li v-for="post in visiblePosts" :key="post.id" class="post">
           <h5>{{ post.title }}</h5>
           <p>{{ post.content }}</p>
         </li>
       </ul>
-      <button @click="toggleVisibility">
-        {{ toggleButtonText }}
-      </button>
+
     </main>
   </section>
 </template>
@@ -19,7 +20,7 @@
 
 <script setup lang="ts">
 import type { IPost } from '@/data/posts';
-import {  computed, defineProps, defineEmits } from 'vue';
+import { computed, defineProps, defineEmits } from 'vue';
 
 
 const props = defineProps({
@@ -35,9 +36,9 @@ const toggleButtonText = computed(() => {
 //const showAll = ref(true); // Исходное состояние - сначала 10 постов
 
 // Возвращаем 10 или все посты
-const visiblePosts = computed (() => {
-    return props.showAll ? props.posts : props.posts.slice(0, 10);
-  });
+const visiblePosts = computed(() => {
+  return props.showAll ? props.posts : props.posts.slice(0, 10);
+});
 const toggleVisibility = () => {
   //showAll.value = !showAll.value; // Переключаем состояние видимости постов
   emit('toggleList'); // Эмитируем событие для родительского компонента

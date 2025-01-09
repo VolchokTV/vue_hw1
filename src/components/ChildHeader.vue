@@ -5,25 +5,26 @@
   </header>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
+import { defineEmits, defineProps } from 'vue';
+
+const emit = defineEmits(['toggle-theme']);
+
+const emitToggleTheme = () => {
+  emit('toggle-theme');
+};
 const props = defineProps({
-     themeName: {
-       type: String,
-       default: 'dark', // Задаем дефолтное значение
-       required: false,
-     }
-   });
-
-   const emit = defineEmits(['toggle-theme']);
-
-   const emitToggleTheme = () =>{
-       emit('toggle-theme');
-   };
+  themeName: { type: String,
+      defult: 'dark',
+       required: true },
+});
+//const themeName = ref('dark');
+console.log (props.themeName);
 </script>
 
 <style>
-header{
+header {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-}</style>
+}
+</style>

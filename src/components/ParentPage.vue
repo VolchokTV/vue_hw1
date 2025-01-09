@@ -1,6 +1,6 @@
 <template>
   <div :class="theme">
-    <ChildHeader @theme-toggled="toggleTheme" :theme-name="themeName" />
+    <ChildHeader @toggle-theme="toggleTheme" :themeName="themeName" />
     <section>
       <div class="content">
         <div>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref,  } from 'vue';
 import ChildHeader from './ChildHeader.vue';
 import ChildMain from './ChildMain.vue';
 import ChildSideBar from './ChildSideBar.vue';
@@ -26,17 +26,19 @@ import ChildFooter from './ChildFooter.vue';
 import { posts } from '@/data/posts';
 
 const theme = ref('light'); // Начальная тема
+const themeName = ref('dark');
 //const posts = ref([]);
 //const showAll = ref(false); // Статус отображения всех постов
 const showAll = ref(false); // Исходное состояние - сначала 10 постов
 // Переключение темы
   const toggleTheme = () => {
     theme.value = theme.value === 'light' ? 'dark' : 'light';
+    themeName.value =  themeName.value === 'light' ? 'dark' : 'light';
   };
 // Сообщение на кнопке
-const themeName = computed(() =>{
-  return theme.value === 'light' ? 'dark' : 'light';
-});
+//const themeName = computed(() =>{
+//  return theme.value === 'light' ? 'dark' : 'light';
+//});
 
 // Переключение состояния
 const toggleList = () => {
