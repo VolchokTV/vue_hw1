@@ -14,8 +14,7 @@ const emitToggleTheme = () => {
 };
 const props = defineProps({
   themeName: { type: String,
-      defult: 'dark',
-       required: true },
+  required: true },
 });
 //const themeName = ref('dark');
 console.log (props.themeName);

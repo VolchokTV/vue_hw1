@@ -26,14 +26,14 @@ import ChildFooter from './ChildFooter.vue';
 import { posts } from '@/data/posts';
 
 const theme = ref('light'); // Начальная тема
-const themeName = ref('dark');
+const themeName = ref('light');
 //const posts = ref([]);
 //const showAll = ref(false); // Статус отображения всех постов
 const showAll = ref(false); // Исходное состояние - сначала 10 постов
 // Переключение темы
   const toggleTheme = () => {
     theme.value = theme.value === 'light' ? 'dark' : 'light';
-    themeName.value =  themeName.value === 'light' ? 'dark' : 'light';
+    themeName.value = theme.value === 'light' ? 'light' : 'dark';
   };
 // Сообщение на кнопке
 //const themeName = computed(() =>{
