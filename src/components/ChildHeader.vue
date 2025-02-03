@@ -1,23 +1,9 @@
 <template>
   <header>
-    <h1> Приложение В.А.В. </h1>
-    <button @click="emitToggleTheme">{{ themeName }}</button>
+    <h1> Приложение В.А.В. ДЗ-4 </h1>
   </header>
 </template>
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue';
-
-const emit = defineEmits(['toggle-theme']);
-
-const emitToggleTheme = () => {
-  emit('toggle-theme');
-};
-const props = defineProps({
-  themeName: { type: String,
-  required: true },
-});
-//const themeName = ref('dark');
-console.log (props.themeName);
 </script>
 
 <style>
