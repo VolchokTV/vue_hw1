@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1> Приложение В.А.В. ДЗ-4 </h1>
+    <h3> Приложение В.А.В. ДЗ-4 </h3>
   </header>
 </template>
 <script setup lang="ts">
@@ -9,7 +9,7 @@
 <style>
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
 }
 </style>
