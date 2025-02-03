@@ -1,15 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+//import HomeView from '../views/HomeView.vue';
 
+import PostList from '@/components/PostList.vue';
+import PostDetail from '@/components/PostDetail.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+     path: '/',
+     name: 'home',
+     component: PostList,
     },
-    //{
+    {
+      path: '/post/:id',
+      name: 'detail',
+      component: PostDetail
+    },
+      //{
       //path: '/about',
       //name: 'about',
       // route level code-splitting

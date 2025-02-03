@@ -5,7 +5,6 @@ import ParentPage from './components/ParentPage.vue';
 
 <template>
    <RouterView />
-   <ParentPage />
 </template>
 
 <style scoped>
