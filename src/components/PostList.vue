@@ -29,7 +29,7 @@ export default {
 };
 </script> -->
 
-<template>
+<!-- <template>
   <div>
     <h1>Посты</h1>
     <ul>
@@ -55,5 +55,4 @@ onMounted(async () => {
   const response = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   posts.value = response.data;
 });
-</script>
-
+</script> -->
